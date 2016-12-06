@@ -47,7 +47,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">HOME</a>
+          <a class="navbar-brand" href="index.php">HOME</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -55,6 +55,7 @@
           <ul class="nav navbar-nav">
 
             <li><a href="About.html">About <span class="sr-only">(current)</span></a></li>
+            <li><a href="Characters.php">Characters <span class="sr-only">(current)</span></a></li>
 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Provinces<span class="caret"></span></a>
@@ -103,25 +104,25 @@
               <label for="name">Who's Your Ansesters?</label></br>
 
               <select name="race"> 
-                <option value="highelf">High Elf</option>
+                <option value="High Elf">High Elf</option>
 
-                <option value="argonian">Argonian</option>
+                <option value="Argonian">Argonian</option>
 
-                <option value="woodelf">Wood Elf</option>
+                <option value="Wood Elf">Wood Elf</option>
 
-                <option value="breton">Breton</option>
+                <option value="Breton">Breton</option>
 
-                <option value="darkelf">Dark ELf</option>
+                <option value="Darkelf">Dark ELf</option>
 
-                <option value="imperial">Imperial</option>
+                <option value="Imperial">Imperial</option>
 
-                <option value="kajiit">Kajiit</option>
+                <option value="Kajiit">Kajiit</option>
 
-                <option value="nord">Nord</option>
+                <option value="Nord">Nord</option>
 
-                <option value="orc">Orc</option>
+                <option value="Orc">Orc</option>
 
-                <option value="redguard">Redguard</option>
+                <option value="Redguard">Redguard</option>
               </select>
             </div>
 
@@ -129,26 +130,39 @@
               <label for="homeland">Where're you from？</label></br>
 
               <select name="homeland"> 
-                <option value="black-marsh">Black Marsh</option>
+                <option value="Black Marsh">Black Marsh</option>
 
-                <option value="cyrodiil">Cyrodiil</option>
+                <option value="Cyrodiil">Cyrodiil</option>
 
-                <option value="elsweyer">Elsweyr</option>
+                <option value="Elsweyer">Elsweyr</option>
 
-                <option value="hammerfell">Hammerfell</option>
+                <option value="Hammerfell">Hammerfell</option>
 
-                <option value="high-rock">High Rock</option>
+                <option value="High Rock">High Rock</option>
 
-                <option value="morrowwind">Morrowind</option>
+                <option value="Morrowind">Morrowind</option>
 
-                <option value="skyrim">Skyrim</option>
+                <option value="Skyrim">Skyrim</option>
 
-                <option value="summerset-isles">Summerset Isles</option>
+                <option value="Summerset Isles">Summerset Isles</option>
 
-                <option value="valenwood">Valenwood</option>
+                <option value="Valenwood">Valenwood</option>
               </select>
             </div>
 
+            <div>
+              <label for="guild">What's your Guild？ (You may control-click (Windows) or command-click (Mac) to select more than one.)</label></br>
+
+              <select name="guild[]" multiple size="4"> 
+                <option value="College of Winterhold">College of Winterhold</option>
+
+                <option value="Thieves Guild">Thieves Guild</option>
+
+                <option value="The Companions">The Companions</option>
+
+                <option value="The Dark Brotherhood">The Dark Brotherhood</option>
+              </select>
+            </div>
 
 
             <div id="charaters">   

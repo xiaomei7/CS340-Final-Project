@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 
-
 <html>
 <head>
   <meta charset="utf-8">
@@ -35,7 +34,7 @@
 
 
 </head>
-<body background="img/valenwood.jpg">
+<body background="img/characters.jpg">
   <header class = "navbar-inverse" role = "banner">
     <div class= "container">
       <nav role = "navigation">
@@ -55,11 +54,11 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
 
-            <li><a href="About">About <span class="sr-only">(current)</span></a></li>
+            <li><a href="About.html">About <span class="sr-only">(current)</span></a></li>
             <li><a href="Characters.php">Characters <span class="sr-only">(current)</span></a></li>
 
             <li class="dropdown">
-              <a href="About.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Provinces<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Provinces<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="blackmarsh.html">Black Marsh</a></li>
                 <li><a href="cyrodiil.html">Cyrodiil</a></li>
@@ -72,18 +71,54 @@
                 <li><a href="valenwood.html">Valenwood</a></li>
               </ul>
             </li>
+
+
           </ul>
-        </div>
+        </div><!-- /.navbar-collapse -->
+
       </nav>
     </div>
   </header>
 
   <div>
-    <h1> Welcome to Valenwood</h1>
-    <h3>The province in the south-western region of Tamriel. This province is largely uninhabited forest wilderness. The coasts are dominated by mangrove swamps and tropical rain forests, while heavy rainfalls nurture the temperate inland rain forests. Valenwood is home to the Bosmer (Wood Elves).</h3>
+    <h1> Here are all the characters that exist in Tamerial </h1>
+    <ul>
+      <?php
+
+        $dbhost = 'oniddb.cws.oregonstate.edu';
+        $dbname = 'guox-db';
+        $dbuser = 'guox-db';
+        $dbpass = 'RCellOvATpqTBbX5';
+
+        $conn = new mysqli($dbhost, $dbname, $dbpass, $dbuser);
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT name, race, homeland, bio FROM Characters";
+        $result = $conn->query($sql);
+
+
+        echo "<h4>";
+        if ($result->num_rows > 0) {
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+              echo "<p><b>Name:</b> " . $row["name"]. "    <b>Race:</b> " . $row["race"]. "    <b>Homeland:</b> " . $row["homeland"]. "    <b>Bio:</b> " . $row["bio"]. "</p><br>";
+          }
+        } else {
+            echo "0 results";
+        }
+        echo "</h4>";
+        
+
+        $conn->close();
+
+    ?>
+    </ul>
   </div>
 
-  <!-- Latest compiled and minified JavaScript -->
+<!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -101,3 +136,4 @@
 
   </body>
 </html>
+

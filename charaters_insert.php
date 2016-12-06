@@ -1,42 +1,4 @@
-<?php
-    //$name = $arr[0];
 
-    $dbhost = 'oniddb.cws.oregonstate.edu';
-    $dbname = 'guox-db';
-    $dbuser = 'guox-db';
-    $dbpass = 'RCellOvATpqTBbX5';
-
-    $conn = new mysqli($dbhost, $dbname, $dbpass, $dbuser);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    /*$homeland = $_POST['homeland'];                
-    $bio = $_POST['bio'];    
-    $name = $_POST['name'];
-    $race = $_POST['race']*/
-
-    //$conn->select_db("guox-db");
-    $sql = "INSERT INTO Characters (name, homeland, bio, race) VALUES (?, ?, ?, ?)";
-
-    if($stmt = $conn->prepare($sql)){
-        $stmt->bind_param("ssss", $name, $homeland, $bio, $race);
-        if($_POST['name']=='')
-            $_POST['name'] = 'N/A';
-
-        $homeland = $_POST['homeland'];                
-        $bio = $_POST['bio'];    
-        $name = $_POST['name'];
-        $race = $_POST['race']
-    }
-    $stmt->execute();
-    $stmt->close();
-
-    $conn->close();
-
-    //header("Location: index.php?page=" . $_SESSION['homeland']);
-?>
 
 <!DOCTYPE html>
 
@@ -87,7 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">HOME</a>
+          <a class="navbar-brand" href="index.php">HOME</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -95,6 +57,7 @@
           <ul class="nav navbar-nav">
 
             <li><a href="About.html">About <span class="sr-only">(current)</span></a></li>
+            <li><a href="Characters.php">Characters <span class="sr-only">(current)</span></a></li>
 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Provinces<span class="caret"></span></a>
@@ -138,3 +101,48 @@
 
   </body>
 </html>
+
+<?php
+
+    $dbhost = 'oniddb.cws.oregonstate.edu';
+    $dbname = 'guox-db';
+    $dbuser = 'guox-db';
+    $dbpass = 'RCellOvATpqTBbX5';
+
+    $conn = new mysqli($dbhost, $dbname, $dbpass, $dbuser);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    
+    $name = mysql_real_escape_string($_POST['name']);
+    $homeland = mysql_real_escape_string($_POST['homeland']);
+    $bio = mysql_real_escape_string($_POST['bio']);
+    $race = mysql_real_escape_string($_POST['race']);
+    //$guild = mysql_real_escape_string($_POST['guild']);
+
+    $guild_string = implode(', ', $_POST['guild']);
+
+
+
+    $sql = "INSERT INTO Characters (name, aid, bio, race, cid, homeland) VALUES (
+        '$name', 
+        (SELECT id FROM Homelands WHERE name='$homeland'), 
+        '$bio', 
+        '$race', 
+        "'. $guild_string .'", 
+        '$homeland')";
+
+    
+
+    if ($conn->query($sql) === TRUE) {
+        echo " ";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+
+?>
+
