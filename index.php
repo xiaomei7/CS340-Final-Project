@@ -88,7 +88,6 @@
       </br>
       </br>
 
-
       <h3>Tell Us About Yourself</h3>
 
       <div id="charaters-area">
@@ -127,7 +126,7 @@
             </div>
 
             <div>
-              <label for="name">Where're you from？</label></br>
+              <label for="homeland">Where're you from？</label></br>
 
               <select name="homeland"> 
                 <option value="black-marsh">Black Marsh</option>
@@ -155,7 +154,7 @@
             <div id="charaters">   
               <label for="name">What's your story?</label></br>
                              
-              <textarea id="msg" name="description" placeholder="Enter the description here..."></textarea>                
+              <textarea id="msg" name="bio" placeholder="Enter the description here..."></textarea>                
             </div>
 
             <div id="cmt">
