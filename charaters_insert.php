@@ -120,9 +120,7 @@
     $homeland = mysql_real_escape_string($_POST['homeland']);
     $bio = mysql_real_escape_string($_POST['bio']);
     $race = mysql_real_escape_string($_POST['race']);
-    //$guild = mysql_real_escape_string($_POST['guild']);
-
-    $guild_string = implode(', ', $_POST['guild']);
+    $guild = mysql_real_escape_string($_POST['guild']);
 
 
 
@@ -131,7 +129,7 @@
         (SELECT id FROM Homelands WHERE name='$homeland'), 
         '$bio', 
         '$race', 
-        "'. $guild_string .'", 
+        (SELECT id FROM Guilds WHERE name='$guild'), 
         '$homeland')";
 
     

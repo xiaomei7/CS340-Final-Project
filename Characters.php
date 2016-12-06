@@ -104,13 +104,12 @@
         if ($result->num_rows > 0) {
           // output data of each row
           while($row = $result->fetch_assoc()) {
-              echo "<p><b>Name:</b> " . $row["name"]. "    <b>Race:</b> " . $row["race"]. "    <b>Homeland:</b> " . $row["homeland"]. "    <b>Bio:</b> " . $row["bio"]. "</p><br>";
+              echo "<p><b>Name:</b> " . $row["name"]. ";    <b>Race:</b> " . $row["race"]. ";    <b>Homeland:</b> " . $row["homeland"]. ";    <b>Bio:</b> " . $row["bio"]. "</p><br>";
           }
         } else {
             echo "0 results";
         }
         echo "</h4>";
-        
 
         $conn->close();
 

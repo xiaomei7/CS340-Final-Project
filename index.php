@@ -151,9 +151,9 @@
             </div>
 
             <div>
-              <label for="guild">What's your Guild？ (You may control-click (Windows) or command-click (Mac) to select more than one.)</label></br>
+              <label for="guild">What's your Guild？ </label></br>
 
-              <select name="guild[]" multiple size="4"> 
+              <select name="guild"> 
                 <option value="College of Winterhold">College of Winterhold</option>
 
                 <option value="Thieves Guild">Thieves Guild</option>
